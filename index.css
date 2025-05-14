@@ -1,180 +1,197 @@
-/* General Reset */
+/* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* Base */
 body {
-    background: #f2f2f7;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
-    padding-top: 60px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #f8f9fb;
+  color: #1c1c1e;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
 }
 
+/* Container */
 .container {
-    background: #ffffff;
-    border-radius: 24px;
-    padding: 24px;
-    width: 360px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  transition: all 0.3s ease;
 }
 
-h1 {
-    font-size: 24px;
-    color: #1c1c1e;
-    margin-bottom: 20px;
-    text-align: center;
-    letter-spacing: -0.5px;
+/* Header */
+.container h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #111;
 }
 
-/* Form */
+/* Calendar & Time */
+.calendar-wrapper {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.calendar-wrapper input[type="date"],
+.calendar-wrapper input[type="time"] {
+  flex: 1;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #f4f4f4;
+  transition: border-color 0.2s ease;
+}
+
+.calendar-wrapper input:focus {
+  border-color: #007aff;
+  outline: none;
+}
+
+/* Task Input */
 .form {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-#task {
-    flex: 1;
-    padding: 14px 16px;
-    border: none;
-    border-radius: 14px;
-    background: #f2f2f7;
-    font-size: 16px;
-    outline: none;
-    color: #1c1c1e;
-    transition: background 0.3s;
+.form input[type="text"] {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background-color: #f4f4f4;
 }
 
-#task:focus {
-    background: #e5e5ea;
+.form input:focus {
+  border-color: #007aff;
+  outline: none;
 }
 
-#add {
-    background: #007aff;
-    color: #fff;
-    border: none;
-    padding: 0 20px;
-    border-radius: 14px;
-    font-size: 24px;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
+.form button {
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-#add i {
-    font-size: 16px;
-}
-
-#add:active {
-    transform: scale(0.95);
-    background: #005ecb;
+.form button:hover {
+  background-color: #005fcc;
 }
 
 /* Task List */
-ul {
-    list-style: none;
-    padding: 0;
+#list {
+  list-style: none;
+  margin-top: 1rem;
 }
 
-li {
-    display: flex;
-    align-items: center;
-    background: #f9f9f9;
-    padding: 14px 16px;
-    border-radius: 16px;
-    margin-bottom: 12px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8),
-                0 4px 10px rgba(0, 0, 0, 0.04);
-    transition: transform 0.3s ease, background 0.3s ease;
-    animation: slideIn 0.3s ease forwards;
+#list li {
+  background-color: #f1f1f6;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s ease;
 }
 
-li:hover {
-    background: #f0f0f0;
+#list li:hover {
+  background-color: #e3e3ea;
 }
 
-.task-text {
-    flex: 1;
-    color: #1c1c1e;
-    font-size: 16px;
-    word-break: break-word;
+#list li .remove {
+  color: #ff3b30;
+  cursor: pointer;
 }
 
-.edit-input {
-    flex: 1;
-    padding: 14px 16px;
-    border: none;
-    border-radius: 14px;
-    background: #e5e5ea;
-    font-size: 16px;
-    outline: none;
-    color: #1c1c1e;
-    animation: fadeIn 0.3s ease;
+/* Reminder Toggle Button */
+#reminder-toggle {
+  background-color: transparent;
+  color: #007aff;
+  font-size: 1rem;
+  border: none;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-/* Buttons */
-.edit-btn, .delete-btn {
-    margin-left: 10px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 32px;
-    height: 32px;
+#reminder-toggle:hover {
+  transform: scale(1.05);
 }
 
-.edit-btn {
-    background-color: #007aff;
-    color: white;
+/* Reminders / Appointments Panel */
+#reminders-panel {
+  background-color: #f9f9fc;
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 1rem;
+  animation: slideDown 0.3s ease forwards;
 }
 
-.edit-btn i {
-    font-size: 14px;
+#reminders-panel h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
-.edit-btn:hover {
-    background-color: #005ecb;
+#appointments-list {
+  list-style: none;
 }
 
-.delete-btn {
-    background-color: #ff3b30;
-    color: white;
+#appointments-list li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  color: #333;
 }
 
-.delete-btn i {
-    font-size: 14px;
-}
-
-.delete-btn:hover {
-    background-color: #d32f2f;
+#appointments-list li:last-child {
+  border-bottom: none;
 }
 
 /* Animations */
-@keyframes slideIn {
-    0% {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-    
+/* Responsive */
+@media (max-width: 480px) {
+  .calendar-wrapper {
+    flex-direction: column;
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  .form button {
+    width: 100%;
+  }
 }
