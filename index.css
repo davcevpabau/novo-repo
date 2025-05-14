@@ -1,4 +1,4 @@
-/* Reset & Font */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -20,7 +20,7 @@ body {
     border-radius: 24px;
     padding: 24px;
     width: 360px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
 }
 
@@ -66,11 +66,16 @@ h1 {
     transition: background 0.2s, transform 0.1s;
 }
 
+#add i {
+    font-size: 16px;
+}
+
 #add:active {
     transform: scale(0.95);
     background: #005ecb;
 }
 
+/* Task List */
 ul {
     list-style: none;
     padding: 0;
@@ -83,28 +88,14 @@ li {
     padding: 14px 16px;
     border-radius: 16px;
     margin-bottom: 12px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.8),
-                0 4px 10px rgba(0,0,0,0.04);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                0 4px 10px rgba(0, 0, 0, 0.04);
     transition: transform 0.3s ease, background 0.3s ease;
     animation: slideIn 0.3s ease forwards;
 }
 
 li:hover {
     background: #f0f0f0;
-}
-
-li button {
-    background: none;
-    border: none;
-    color: #007aff;
-    font-size: 16px;
-    margin-left: 12px;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-li button:hover {
-    color: #005ecb;
 }
 
 .task-text {
@@ -126,6 +117,47 @@ li button:hover {
     animation: fadeIn 0.3s ease;
 }
 
+/* Buttons */
+.edit-btn, .delete-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+}
+
+.edit-btn {
+    background-color: #007aff;
+    color: white;
+}
+
+.edit-btn i {
+    font-size: 14px;
+}
+
+.edit-btn:hover {
+    background-color: #005ecb;
+}
+
+.delete-btn {
+    background-color: #ff3b30;
+    color: white;
+}
+
+.delete-btn i {
+    font-size: 14px;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* Animations */
 @keyframes slideIn {
     0% {
         opacity: 0;
@@ -144,4 +176,5 @@ li button:hover {
     100% {
         opacity: 1;
     }
+    
 }
