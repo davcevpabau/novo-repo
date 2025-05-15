@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Create timestamp
     let timestamp;
     if (selectedTime) {
-      // Combine the date and time
       const [hours, minutes] = selectedTime.split(":");
       selectedDate.setHours(parseInt(hours), parseInt(minutes));
       timestamp = selectedDate.getTime();
@@ -117,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Show notification
     showNotification("Task added successfully!");
 
-    // Focus back on the input field
     taskInput.focus();
   }
 
@@ -126,14 +124,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let filteredTasks = [...tasks];
 
-    // Apply filter
     if (currentFilter === "active") {
       filteredTasks = filteredTasks.filter((task) => !task.completed);
     } else if (currentFilter === "completed") {
       filteredTasks = filteredTasks.filter((task) => task.completed);
     }
 
-    // Apply search
     const searchTerm = searchInput.value.toLowerCase().trim();
     if (searchTerm) {
       filteredTasks = filteredTasks.filter(
@@ -143,7 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
 
-    // Sort tasks: priority first, then uncompleted first, then by date
     filteredTasks.sort((a, b) => {
       const priorityOrder = { high: 0, medium: 1, low: 2 };
       const priorityCompare =
@@ -184,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
     taskText.textContent = task.text;
     contentDiv.appendChild(taskText);
 
-    // Task metadata
     const metaDiv = document.createElement("div");
     metaDiv.classList.add("task-meta");
 

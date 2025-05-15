@@ -67,7 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
     playerDisplay.classList.add("rps-shake");
     computerDisplay.classList.add("rps-shake");
 
-    // Disable buttons during animation
     setButtonsEnabled(false);
 
     // Show result after animation
