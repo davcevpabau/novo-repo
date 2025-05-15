@@ -12,37 +12,91 @@
   </head>
   <body>
     <div class="container">
-      <h1>Davcev To‑Do</h1>
-
-      <div class="calendar-wrapper">
-        <input type="date" id="task-date" />
-        <input type="time" id="task-time" class="time-input" />
+      <div class="app-header">
+        <h1>Davcev To‑Do</h1>
+        <div class="theme-toggle">
+          <button id="theme-switch" title="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
       </div>
 
-      <div class="form">
-        <input type="text" id="task" placeholder="What do you want to do?" />
-        <button id="add"><i class="fas fa-plus"></i></button>
+      <div class="form-container">
+        <div class="calendar-wrapper">
+          <input type="date" id="task-date" />
+          <input type="time" id="task-time" class="time-input" />
+        </div>
+
+        <div class="task-details">
+          <div class="form">
+            <input
+              type="text"
+              id="task"
+              placeholder="What do you want to do?"
+            />
+            <select id="task-category">
+              <option value="">Category</option>
+              <option value="work">Work</option>
+              <option value="personal">Personal</option>
+              <option value="shopping">Shopping</option>
+              <option value="health">Health</option>
+              <option value="other">Other</option>
+            </select>
+            <select id="task-priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+            <button id="add"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
       </div>
 
-      <ul id="list"></ul>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+        <div class="search-container">
+          <input type="text" id="search-tasks" placeholder="Search tasks..." />
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
 
-      <button
-        id="reminder-toggle"
-        title="Toggle Appointments Panel"
-        aria-label="Toggle Reminders"
-        style="margin-top: 8px"
-      >
-        📅 Show Appointments
-      </button>
+      <div class="tasks-container">
+        <div id="task-stats">
+          <span id="tasks-count">0 tasks</span>
+          <button id="clear-completed">Clear Completed</button>
+        </div>
+        <ul id="list"></ul>
+      </div>
+
+      <div class="secondary-features">
+        <button id="reminder-toggle" title="Toggle Appointments Panel">
+          📅 Show Appointments
+        </button>
+        <button id="export-tasks" title="Export Tasks">
+          <i class="fas fa-file-export"></i> Export
+        </button>
+      </div>
 
       <div
         id="reminders-panel"
         class="appointments-panel"
         style="display: none"
       >
-        <h2>Appointments</h2>
+        <div class="panel-header">
+          <h2>Appointments</h2>
+          <button id="close-panel" class="close-btn">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
         <ul id="appointments-list"></ul>
       </div>
+    </div>
+
+    <div class="notification" id="notification">
+      <p id="notification-message"></p>
+      <button id="notification-close"><i class="fas fa-times"></i></button>
     </div>
 
     <script src="app.js"></script>
