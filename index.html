@@ -5,13 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Davcev To‑Do List App</title>
     <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="rps-game.css" />
+    <link rel="stylesheet" href="sidebar.css" />
+    <link rel="stylesheet" href="navbar.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
   </head>
-  <body>
-    <div class="container">
+  <body class="with-navbar">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <button
+          id="sidebar-toggle"
+          class="navbar-toggle"
+          aria-label="Toggle Sidebar"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <h1>Davcev To-Do</h1>
+      </div>
+      <div class="navbar-menu" id="navbar-menu">
+        <a href="#" id="todo-link" class="nav-item active">
+          <i class="fas fa-tasks"></i> To-Do List
+        </a>
+        <a href="#" id="game-link" class="nav-item">
+          <i class="fas fa-gamepad"></i> Game
+        </a>
+        <a href="#" class="nav-item">
+          <i class="fas fa-chart-bar"></i> Statistics
+        </a>
+        <a href="#" class="nav-item"> <i class="fas fa-cog"></i> Settings </a>
+      </div>
+      <button
+        id="mobile-menu-toggle"
+        class="navbar-toggle"
+        aria-label="Toggle Mobile Menu"
+      >
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar" aria-expanded="false">
+      <div class="sidebar-header">
+        <h2>Menu</h2>
+        <button
+          id="sidebar-close"
+          class="sidebar-close"
+          aria-label="Close Sidebar"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="sidebar-section">
+        <h3>Dashboard</h3>
+        <ul class="sidebar-menu">
+          <li class="sidebar-menu-item">
+            <a href="#" class="sidebar-menu-link active">
+              <i class="fas fa-tasks"></i> All Tasks
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="#" class="sidebar-menu-link">
+              <i class="fas fa-calendar-alt"></i> Calendar
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="#" class="sidebar-menu-link">
+              <i class="fas fa-chart-bar"></i> Statistics
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar-section">
+        <h3>Categories</h3>
+        <ul class="sidebar-menu">
+          <li class="sidebar-menu-item">
+            <a href="#" class="sidebar-menu-link">
+              <i class="fas fa-briefcase"></i> Work
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="#" class="sidebar-menu-link">
+              <i class="fas fa-user"></i> Personal
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="#" class="sidebar-menu-link">
+              <i class="fas fa-shopping-cart"></i> Shopping
+            </a>
+          </li>
+          <li class="sidebar-menu-item">
+            <a href="#" class="sidebar-menu-link">
+              <i class="fas fa-heartbeat"></i> Health
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="user-profile">
+        <div class="user-avatar">D</div>
+        <div class="user-info">
+          <div class="user-name">Davcev</div>
+          <div class="user-role">Premium User</div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- Main Container for Todo App -->
+    <div class="container" id="todo-container">
       <div class="app-header">
         <h1>Davcev To‑Do</h1>
         <div class="theme-toggle">
@@ -94,11 +198,62 @@
       </div>
     </div>
 
+    <!-- Game Container for Rock Paper Scissors -->
+    <div id="rps-game-container" class="container">
+      <h2>Rock Paper Scissors Game</h2>
+
+      <div class="rps-scoreboard">
+        <div class="score-box">
+          <div class="score-label">You</div>
+          <div class="score-value" id="player-score">0</div>
+        </div>
+        <div class="score-box">
+          <div class="score-label">Computer</div>
+          <div class="score-value" id="computer-score">0</div>
+        </div>
+        <div class="score-box">
+          <div class="score-label">Ties</div>
+          <div class="score-value" id="ties-score">0</div>
+        </div>
+      </div>
+
+      <div class="rps-battle">
+        <div class="rps-choice">
+          <h4>You</h4>
+          <div class="rps-choice-display" id="player-choice">?</div>
+        </div>
+        <div class="rps-vs">VS</div>
+        <div class="rps-choice">
+          <h4>Computer</h4>
+          <div class="rps-choice-display" id="computer-choice">?</div>
+        </div>
+      </div>
+
+      <div class="rps-message" id="result-message">Choose your move!</div>
+
+      <div class="rps-controls">
+        <button class="rps-btn" id="rock-btn">✊</button>
+        <button class="rps-btn" id="paper-btn">✋</button>
+        <button class="rps-btn" id="scissors-btn">✌️</button>
+      </div>
+
+      <button class="rps-restart" id="restart-game">Restart Game</button>
+
+      <div class="game-actions">
+        <button class="btn" id="close-game">
+          <i class="fas fa-arrow-left"></i> Back to Tasks
+        </button>
+      </div>
+    </div>
+
     <div class="notification" id="notification">
       <p id="notification-message"></p>
       <button id="notification-close"><i class="fas fa-times"></i></button>
     </div>
 
     <script src="app.js"></script>
+    <script src="rps-game.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="navbar.js"></script>
   </body>
 </html>

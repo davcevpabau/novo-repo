@@ -1,0 +1,122 @@
+.rps-battle {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.rps-choice {
+  text-align: center;
+}
+
+.rps-choice h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.rps-choice-display {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  height: 80px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--task-bg);
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+}
+
+.rps-vs {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.rps-message {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  min-height: 2rem;
+  color: var(--text-color);
+}
+
+.rps-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rps-btn {
+  background-color: var(--task-bg);
+  border: none;
+  padding: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.rps-btn:hover {
+  transform: translateY(-5px);
+  background-color: var(--task-hover);
+}
+
+.rps-btn.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.rps-restart {
+  display: block;
+  margin: 1.5rem auto 0;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.rps-restart:hover {
+  background-color: var(--primary-dark);
+}
+
+@keyframes rpsShake {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  75% {
+    transform: translateY(10px);
+  }
+}
+
+.rps-shake {
+  animation: rpsShake 0.5s ease 3;
+}
+
+@media (max-width: 600px) {
+  .rps-battle {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .rps-vs {
+    transform: rotate(90deg);
+    margin: 0.5rem 0;
+  }
+}

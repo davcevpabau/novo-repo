@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // DOM Elements
   const addButton = document.getElementById("add");
   const taskInput = document.getElementById("task");
   const taskDate = document.getElementById("task-date");
@@ -21,20 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const notificationMessage = document.getElementById("notification-message");
   const notificationClose = document.getElementById("notification-close");
 
-  // Set default date to today
   const today = new Date();
   const formattedDate = formatDateForInput(today);
   taskDate.value = formattedDate;
 
-  // State
   let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   let currentFilter = "all";
   let darkMode = localStorage.getItem("darkMode") === "true";
 
-  // Initialize the app
   init();
 
-  // Event Listeners
   addButton.addEventListener("click", addTask);
   taskInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
@@ -275,22 +270,17 @@ document.addEventListener("DOMContentLoaded", () => {
     editBtn.innerHTML = '<i class="fas fa-save"></i>';
     editBtn.title = "Save changes";
 
-    // Function to save the edited task
     function saveEdit() {
       if (input.value.trim() !== "") {
-        // Update task text
         task.text = input.value.trim();
         taskTextElement.textContent = task.text;
 
-        // Replace input with task text
         taskContentDiv.insertBefore(taskTextElement, input);
         taskContentDiv.removeChild(input);
 
-        // Restore edit button
         editBtn.innerHTML = '<i class="fas fa-edit"></i>';
         editBtn.title = "Edit task";
 
-        // Update task in state
         const taskIndex = tasks.findIndex((t) => t.id === task.id);
         if (taskIndex !== -1) {
           tasks[taskIndex] = task;
@@ -298,25 +288,21 @@ document.addEventListener("DOMContentLoaded", () => {
           updateReminder(task);
         }
 
-        // Show notification
         showNotification("Task updated successfully!");
       }
     }
 
-    // Add event listener to save button
     editBtn.removeEventListener("click", () =>
       enableEditMode(li, taskTextElement, task)
     );
     editBtn.addEventListener("click", saveEdit, { once: true });
 
-    // Save on Enter key
     input.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
         saveEdit();
       }
     });
 
-    // Focus on input
     input.focus();
   }
 
@@ -550,7 +536,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (Notification.permission === "granted") {
               new Notification("Task Reminder", {
                 body: `Your task "${task.text}" is due soon!`,
-                icon: "https://example.com/icon.png", // Replace with actual icon path
+                icon: "https://fonts.gstatic.com/s/i/materialiconsoutlined/notifications/v18/24px.svg",
               });
             } else if (Notification.permission !== "denied") {
               Notification.requestPermission();
